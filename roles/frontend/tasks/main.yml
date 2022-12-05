@@ -3,10 +3,16 @@
     name: nginx
     state: installed
 
+- name: Include download App Code Tasks from Common Role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download-app-code
+
 - name: Start Nginx Service
   ansible.builtin.systemd:
     name: nginx
     state: restarted
     enabled: yes
+
 
 
